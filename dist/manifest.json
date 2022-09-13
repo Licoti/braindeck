@@ -1,0 +1,5 @@
+{
+  "index.js": "javascripts/index.bundle.js",
+  "js/base.js": "javascripts/js/base.bundle.js",
+  "javascripts/vendors-node_modules_jquery_dist_jquery_js.bundle.js": "javascripts/vendors-node_modules_jquery_dist_jquery_js.bundle.js"
+}
