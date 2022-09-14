@@ -9,7 +9,7 @@ const appCSSFile = json['app.css'];
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', {
-    title: 'SandBox !',
+    title: 'Mes livres',
     appJSFile: indexJSFile,
     appCSSFile: appCSSFile,
   });

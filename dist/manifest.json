@@ -1,5 +1,8 @@
 {
   "index.js": "javascripts/index.bundle.js",
   "js/base.js": "javascripts/js/base.bundle.js",
-  "javascripts/vendors-node_modules_jquery_dist_jquery_js.bundle.js": "javascripts/vendors-node_modules_jquery_dist_jquery_js.bundle.js"
+  "material-icons-outlined.woff": "f882956fd323fd322f31.woff",
+  "material-icons.woff": "4d73cb90e394b34b7670.woff",
+  "material-icons-outlined.woff2": "6f420cf17cc0d7676fad.woff2",
+  "material-icons.woff2": "0c35d18bf06992036b69.woff2"
 }

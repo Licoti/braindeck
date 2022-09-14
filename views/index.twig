@@ -1,13 +1,38 @@
 {% extends 'layout.twig' %}
 
 {% block body %}
-  <h1>{{title}}</h1>
-  <p>Welcome to {{title}} !</p>
+  <main class="main">
+    <section class="container">
+      <h1>{{title}}</h1>
+      
+      <form class="addBook">
+        <fieldset>
+          <legend>Ajouter un nouveau livre</legend>
+          
+          <div class="mb-3">
+            <label for="inputBookName" class="form-label">Nom du livre</label>
+            <input type="text" class="form-control" id="inputBookName">
+          </div>
+  
+          <div class="mb-3">
+            <label for="inputBookCategory" class="form-label">Catégories</label>
+            <input type="text" class="form-control" id="inputBookCategory">
+          </div>
     
-    <form>
-      <input id="username" type="text" placeholder="pseudo">
-      <input id="password" type="password" placeholder="password">
-      <input id="registerForm" type="submit">
-    </form>
-    
+          <div class="mb-3">
+            <label for="formFileBookNote" class="form-label">Importer les notes du livre</label>
+            <input class="form-control" type="file" id="formFileBookNote">
+          </div>
+          
+          <button id="submitBook" type="submit" class="btn btn-primary">Enregistrer</button>
+        </fieldset>
+      </form>
+      
+      <section id="bookList">
+        <h2 class="mt-5">Liste de mes livres</h2>
+        
+        <ul class="bookList-list"></ul>
+      </section>
+    </section>
+  </main>
 {% endblock %}
