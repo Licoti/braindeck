@@ -9,7 +9,7 @@ function connectDB (who = 'unknown') {
     uri = 'mongodb://127.0.0.1:27017/Book';
   } else {
     console.log('NOT IN DEV MODE !');
-    uri = 'mongodb+srv://db:pcwd';
+    uri = `mongodb+srv://Book:${process.env.BDD}@cluster0.jsjlofz.mongodb.net/?retryWrites=true&w=majority`;
   }
 
   mongoose.connect(uri).then(
