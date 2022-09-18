@@ -14,7 +14,6 @@ export function initHome () {
         this._listBook();
         this._categoryBook();
       }
-
     },
 
     _categoryBook: function () {
@@ -107,7 +106,7 @@ export function initHome () {
         return xhr.responseText;
       });
 
-      $('.bookList-list').append(`<li>${bookName}</li>`);
+      $('.bookList-list').append(`<li>${bookName} - ${bookInfo.categories.map(x => x.name)}</li>`);
     },
 
     _listBook: function (e) {
@@ -118,9 +117,17 @@ export function initHome () {
         for (let j = 0; j < data.length; j++) {
           const book = data[j];
           const bookName = book.name;
+          const bookCategory = book.category;
+          let bookCategoryName = [];
+          let bookCategoryId = [];
+
+          for (let j = 0; j < bookCategory.length; j++) {
+            bookCategoryName.push(bookCategory[j].name);
+            bookCategoryId.push(bookCategory[j].id);
+          }
 
           dynnamicNote +=
-            `<li class="hey">${bookName}</li>`;
+            `<li class="hey">${bookName} - ${bookCategoryName}</li>`;
         }
 
         $('.bookList-list').append(`${dynnamicNote}`);

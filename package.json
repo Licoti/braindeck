@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "webpack": "webpack",
-    "start": "nodemon --inspect ./bin/www"
+    "start": "nodemon --inspect ./bin/www",
+    "heroku-postbuild": "webpack --mode production"
   },
   "dependencies": {
     "@popperjs/core": "^2.11.6",
@@ -36,5 +37,8 @@
     "webpack-cli": "^4.10.0",
     "webpack-dev-server": "^4.11.0",
     "webpack-manifest-plugin": "^5.0.0"
+  },
+  "engines": {
+    "node": "17.3.0"
   }
 }
