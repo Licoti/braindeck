@@ -1,15 +1,16 @@
 let uri = null;
 const mongoose = require('mongoose');
 const debug = process.env.NODE_ENV === 'dev';
+const bdd = process.env.BDD;
 const options = {};
 
 function connectDB (who = 'unknown') {
   if (process.env.NODE_ENV === 'dev') {
     console.log('DEV MODE !')
-    uri = 'mongodb://127.0.0.1:27017/Book';
+    uri = `mongodb://127.0.0.1:27017/Book`;
   } else {
     console.log('NOT IN DEV MODE !');
-    uri = `mongodb+srv://Book:${process.env.BDD}@cluster0.jsjlofz.mongodb.net/?retryWrites=true&w=majority`;
+    uri = `mongodb+srv://Book:${bdd}@cluster0.jsjlofz.mongodb.net/Book`;
   }
 
   mongoose.connect(uri).then(

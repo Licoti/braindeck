@@ -15,8 +15,6 @@ async function _createBook (req, res) {
 
   const book = new Book();
 
-  console.log('test',req.body.bookname);
-
   book.name = req.body.bookname;
 
   book

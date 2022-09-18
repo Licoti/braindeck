@@ -2,9 +2,10 @@
   "name": "booknodegenerator",
   "version": "0.0.0",
   "private": true,
+  "main": "./bin/www.js",
   "scripts": {
     "webpack": "webpack",
-    "start": "nodemon --inspect ./bin/www",
+    "start": "nodemon --inspect ./bin/www.js",
     "heroku-postbuild": "webpack --mode production"
   },
   "dependencies": {
