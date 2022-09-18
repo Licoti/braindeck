@@ -6,7 +6,10 @@ const BookSchema = new Schema({
     type: String,
     unique: true,
     required: true
-  }
+  },
+  category: {
+    type: Array
+  },
 });
 
 const Book = mongoose.model('Book', BookSchema);

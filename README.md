@@ -1,10 +1,6 @@
 # Boilerplate
 
-nodejs (express - twig), webpack 5, mongodb
-
-Minimum node version : 14.15
-
-nvm use 14.15
+Base : https://github.com/Licoti/webpack-express-mongo
 
 ## Installation
 
