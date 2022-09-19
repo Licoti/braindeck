@@ -1,0 +1,9 @@
+const express = require('express');
+
+const IndexCtrl = require('../controllers/indexctrl');
+
+const router = express.Router();
+
+router.get('/', IndexCtrl.indexBook);
+
+module.exports = router;

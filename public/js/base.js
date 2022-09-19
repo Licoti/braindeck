@@ -8,6 +8,7 @@ export function initHome () {
 
       if (document.getElementsByClassName('addBook').length > 0) {
         $('#submitBook').on('click', this._addBook);
+        $('.bookList-list').on('click', 'li button', this._deleteBook);
       }
 
       if (document.getElementsByClassName('bookList-list').length > 0) {
@@ -89,6 +90,7 @@ export function initHome () {
       let bookInfo;
 
       bookInfo = {
+        bookid: Date.now(),
         bookname: bookName,
         categories: categories
       };
@@ -106,7 +108,26 @@ export function initHome () {
         return xhr.responseText;
       });
 
-      $('.bookList-list').append(`<li>${bookName} - ${bookInfo.categories.map(x => x.name)}</li>`);
+      $('.bookList-list').append(`<li id="${bookInfo.bookid}">${bookName} - ${bookInfo.categories.map(x => x.name)}</li>`);
+    },
+
+    _deleteBook: function (e) {
+      e.preventDefault();
+
+      if (debug) console.log('_addBook');
+
+      const idBook = $(this).closest('li').attr("id");
+      $(this).closest('li').remove();
+
+      $.ajax({
+        type:"DELETE",
+        url: `/book/${idBook}`,
+      }).done(function(response){
+        console.log("Response of update: ",response)
+      }).fail(function(xhr, textStatus, errorThrown){
+        console.log("ERROR: ",xhr.responseText)
+        return xhr.responseText;
+      });
     },
 
     _listBook: function (e) {
@@ -118,6 +139,7 @@ export function initHome () {
           const book = data[j];
           const bookName = book.name;
           const bookCategory = book.category;
+          const bookId = book.bookid;
           let bookCategoryName = [];
           let bookCategoryId = [];
 
@@ -127,7 +149,7 @@ export function initHome () {
           }
 
           dynnamicNote +=
-            `<li class="hey">${bookName} - ${bookCategoryName}</li>`;
+            `<li id="${bookId}">${bookName} - ${bookCategoryName} <button>supprimer</button></li>`;
         }
 
         $('.bookList-list').append(`${dynnamicNote}`);

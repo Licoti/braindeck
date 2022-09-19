@@ -1,8 +1,4 @@
 const { Book } = require('../models');
-const json = require('../../dist/manifest.json');
-const indexJSFile = json['index.js'];
-const appCSSFile = json['app.css'];
-
 const debug = process.env.NODE_ENV === 'dev';
 
 createBook = (req, res) => {
@@ -18,8 +14,10 @@ createBook = (req, res) => {
   }
 
   const book = new Book();
+  book.bookid = req.body.bookid;
   book.name = req.body.bookname;
   book.category = req.body.categories;
+
 
   book
     .save()
@@ -41,19 +39,30 @@ getBooks = (req, res) => {
   if (debug) console.log('getBooks');
 
   Book.find().exec(function (err, data) {
+    if (err) console.log('err : ', err);
 
     res.send(data);
   });
 }
 
-indexBook = (req, res) => {
-  if (debug) console.log('getBooks');
+getBookById = (req, res) => {
+  if (debug) console.log('getBookById', req.params.id);
 
-  res.render('index', {
-    title: 'Mes livres',
-    appJSFile: indexJSFile,
-    appCSSFile: appCSSFile,
+  Book.findOne({ bookid: req.params.id }).exec(function(err, data) {
+    if (err) console.log('err : ', err);
+
+    res.send(data);
   });
 }
 
-module.exports = { getBooks, createBook, indexBook };
+deleteBook = (req, res) => {
+  if (debug) console.log('getBookById', req.params.id);
+
+  Book.deleteOne({ bookid: req.params.id }).exec(function(err, data) {
+    if (err) console.log('err : ', err);
+
+    res.send(data);
+  });
+}
+
+module.exports = { createBook, getBooks, getBookById, deleteBook };
