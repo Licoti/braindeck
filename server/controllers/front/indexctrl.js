@@ -1,4 +1,4 @@
-const json = require('../../dist/manifest.json');
+const json = require('../../../dist/manifest.json');
 const indexJSFile = json['index.js'];
 const appCSSFile = json['app.css'];
 

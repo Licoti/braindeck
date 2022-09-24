@@ -1,8 +1,8 @@
-const { Book } = require('../models');
+const { Book } = require('../../models');
 const debug = process.env.NODE_ENV === 'dev';
 
 async function _createBook (req, res) {
-  if (debug) console.log('Initialisation de la Home Page', page);
+  if (debug) console.log('_createBook');
 
   const body = req.body;
 
@@ -15,7 +15,14 @@ async function _createBook (req, res) {
 
   const book = new Book();
 
+  if (!book) {
+    return res.status(400).json({ success: false, error: err })
+  }
+
+  book.bookid = req.body.bookid;
   book.name = req.body.bookname;
+  book.category = req.body.categories;
+
 
   book
     .save()

@@ -3,6 +3,7 @@ const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser')
 const logger = require('morgan');
 const connectDB = require('./server/database/db');
 connectDB('app');
@@ -15,8 +16,9 @@ const bookRouter = require('./server/routes/bookrouter');
 
 const app = express();
 
-app.options('*', cors());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
+app.use(bodyParser.json());
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -33,7 +35,11 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'dist')));
 app.use(express.static(path.join(__dirname, 'node_modules')));
 
-app.use('/', indexRouter, bookRouter);
+//Front
+app.use('/', indexRouter);
+
+//API
+app.use('/api', bookRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

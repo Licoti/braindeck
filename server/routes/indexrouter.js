@@ -1,6 +1,6 @@
 const express = require('express');
 
-const IndexCtrl = require('../controllers/indexctrl');
+const IndexCtrl = require('../controllers/front/indexctrl');
 
 const router = express.Router();
 

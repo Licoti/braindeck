@@ -14,7 +14,7 @@ function connectDB (who = 'unknown') {
     uri = `mongodb+srv://Book:${bdd}@${cluster}.mongodb.net/Book`;
   }
 
-  mongoose.connect(uri).then(
+  mongoose.connect(uri, { useNewUrlParser: true }).then(
     () => { console.log(`Connexion à MongoDB réussie ! ${who} est connecté`) },
     err => { console.log(`Connexion à MongoDB fail ! ${who} n'est pas connecté`) }
   );

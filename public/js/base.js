@@ -24,7 +24,7 @@ export function initHome () {
 
       $.ajax({
         type: "GET",
-        url: "/books",
+        url: "api/books",
         async: false,
         success: function(data) {
           for (let j = 0; j < data.length; j++) {
@@ -100,7 +100,7 @@ export function initHome () {
         dataType:"json",
         contentType: "application/json",
         data:JSON.stringify(bookInfo),
-        url:"/book"
+        url:"api/book"
       }).done(function(response){
         console.log("Response of update: ",response)
       }).fail(function(xhr, textStatus, errorThrown){
@@ -121,7 +121,7 @@ export function initHome () {
 
       $.ajax({
         type:"DELETE",
-        url: `/book/${idBook}`,
+        url: `api/book/${idBook}`,
       }).done(function(response){
         console.log("Response of update: ",response)
       }).fail(function(xhr, textStatus, errorThrown){
@@ -134,7 +134,7 @@ export function initHome () {
       if (debug) console.log('_listBook');
       let dynnamicNote = '';
 
-      $.get('/books', function (data) {
+      $.get('api/books', function (data) {
         for (let j = 0; j < data.length; j++) {
           const book = data[j];
           const bookName = book.name;
