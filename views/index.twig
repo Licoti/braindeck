@@ -5,7 +5,31 @@
     <section class="container">
       <h1>{{title}}</h1>
       
-      <form class="addBook">
+      <h2>Multer</h2>
+      <form id="multerForm" action="api/stats" enctype="multipart/form-data" method="post">
+        <div class="form-group">
+          <input type="file" class="form-control-file" name="uploaded_file">
+          <input type="text" id="inputMulterUpload" class="form-control textMulter" placeholder="Number of speakers" name="nspeakers">
+          <input type="submit" id="inputMulter" value="Get me the stats!" class="btn btn-default">
+        </div>
+      </form>
+      
+      <h2>Fileupload</h2>
+      <form action="api/single" method="post" enctype="multipart/form-data" class="uploadBook">
+        <div class="mb-3">
+          <label for="inputBookName2" class="form-label">Nom du livre</label>
+          <input type="text" class="form-control" id="inputBookName2">
+        </div>
+        <div class="mb-3">
+          <label for="formFileBookNote2" class="form-label">Importer les notes du livre</label>
+          <input class="form-control" name="mFile" type="file" id="formFileBookNote2">
+  
+          <button id="uploadBook" type="submit" class="btn btn-primary">Envoyer</button>
+        </div>
+      </form>
+      
+      <h2>No Upload</h2>
+      <forms class="addBook">
         <fieldset>
           <legend>Ajouter un nouveau livre</legend>
           
@@ -21,12 +45,12 @@
           
           <div class="mb-3">
             <label for="formFileBookNote" class="form-label">Importer les notes du livre</label>
-            <input class="form-control" type="file" id="formFileBookNote">
+            <input class="form-control" name="mFile" type="file" id="formFileBookNote">
           </div>
           
           <button id="submitBook" type="submit" class="btn btn-primary">Enregistrer</button>
         </fieldset>
-      </form>
+      </forms>
       
       <section id="bookList">
         <h2 class="mt-5">Liste de mes livres</h2>
