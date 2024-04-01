@@ -5,13 +5,11 @@ async function _getBooks (req, res) {
   if (debug) console.log('_getBooks');
 
   try {
-    await Book.find().exec(function (err, data) {
-      if (err) console.log('err : ', err);
-
-      res.send(data);
-    });
-  } catch {
-    console.log(err)
+    const data = await Book.find().exec();
+    res.send(data);
+  } catch (err) {
+    console.error('Erreur lors de la récupération des livres : ', err);
+    res.status(500).send('Une erreur est survenue lors de la récupération des livres');
   }
 }
 
